@@ -1,0 +1,42 @@
+# On branch develop
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	new file:   android/bootable/bootloader/lk/app/aboot/recovery.c
+#	new file:   android/bootable/bootloader/lk/app/aboot/recovery.h
+#	new file:   android/bootable/bootloader/lk/target/msm7627a/rules.mk
+#	new file:   android/bootable/recovery/Android.mk
+#	new file:   android/bootable/recovery/bootloader.h
+#	new file:   android/bootable/recovery/recovery.cpp
+#	new file:   android/bootable/recovery/updater/Android.mk
+#	new file:   android/bootable/recovery/updater/install.c
+#	new file:   android/build/core/Makefile
+#	new file:   android/build/core/aduosfotainfo.sh
+#	new file:   android/build/core/adupsfota_init.rc
+#	new file:   android/build/core/getOtaPackage.sh
+#	new file:   android/build/tools/releasetools/ota_from_target_files_adupsfota
+#	new file:   android/device/qcom/common/common.mk
+#	new file:   android/device/qcom/msm7627a/AndroidBoard.mk
+#	new file:   android/device/qcom/msm7627a/BoardConfig.mk
+#	new file:   android/device/smlt/e716/recovery.fstab
+#	new file:   android/device/smlt/e716/recovery_mmc.fstab
+#	new file:   android/modem_images/emmc_appsboothdtail.mbn
+#	new file:   android/modem_images/fat.bin
+#	new file:   android/modem_images/oemsbl.mbn
+#	new file:   android/modem_images/oemsblhd.mbn
+#	new file:   android/modem_images/oemsblhdtail.mbn
+#	new file:   android/modem_images/qcsbl.mbn
+#	new file:   android/modem_images/qcsblhd_cfgdata.mbn
+#	new file:   android/packages/apps/AdupsFotaApp/AdupsFota/Android.mk
+#	new file:   android/packages/apps/AdupsFotaApp/AdupsFota/noIcon/AdupsFota.apk
+#	new file:   android/packages/apps/AdupsFotaApp/AdupsFota/withIcon/AdupsFota.apk
+#	new file:   android/packages/apps/AdupsFotaApp/AdupsFotaReboot/AdupsFotaReboot.apk
+#	new file:   android/packages/apps/AdupsFotaApp/AdupsFotaReboot/Android.mk
+#	new file:   android/packages/apps/AdupsFotaApp/Android.mk
+#	new file:   android/packages/apps/AdupsFotaApp/fotabinder
+#	new file:   android/vendor/qcom/proprietary/qrdplus/osupdate/src/com/qualcomm/update/UpdateDialog.java
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	changes.txt

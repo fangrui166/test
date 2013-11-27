@@ -1,0 +1,69 @@
+LOCAL_DIR := $(GET_LOCAL_DIR)
+
+INCLUDES += -I$(LOCAL_DIR)/include -I$(LK_TOP_DIR)/platform/msm_shared
+
+PLATFORM := msm7x27a
+
+MEMBASE := 0x00000000 # SMI
+MEMSIZE := 0x00100000 # 1MB
+
+BASE_ADDR        := 0x00200000
+
+TAGS_ADDR        := BASE_ADDR+0x00000100
+KERNEL_ADDR      := BASE_ADDR+0x00008000
+RAMDISK_ADDR     := BASE_ADDR+0x01000000
+
+#
+# To fix DMA failure in 256MB position, the SCRATCH_ADDR need to
+# align to nand flash page size(8KB page + 256B spare) ,EMMC page size(512B),
+# USB download package size(16KB)
+# Then we have the below equation.
+# 256*1024*1024 = (8*1024 + 256)*64*X + SCRATCH_ADDR
+# Let X = 474, then we get
+# SCRATCH_ADDR = 0xB98000
+#
+SCRATCH_ADDR     := 0xB98000
+
+KEYS_USE_GPIO_KEYPAD := 1
+
+DEFINES += DISPLAY_TYPE_MDDI=0
+DEFINES += DISPLAY_TYPE_LCDC=0
+#DEFINES += DISPLAY_SPLASH_SCREEN=1
+DEFINES += DISPLAY_TYPE_MIPI=1
+DEFINES += DISPLAY_MIPI_PANEL_RENESAS=1
+DEFINES += USE_PCOM_SECBOOT=1
+DEFINES += TARGET_USES_GIC_VIC=1
+#DEFINES += MIPI_VIDEO_MODE=0
+DEFINES += MIPI_CMD_MODE=0
+
+ifeq ($(SMLT_DEVICE), e716)
+DEFINES += DISPLAY_SPLASH_SCREEN=1
+DEFINES += FEATURE_E716_KEYPAD
+#adupsfota start 
+DEFINES += ADUPS_FOTA_SUPPORT=1
+#adupsfota end
+else
+DEFINES += DISPLAY_SPLASH_SCREEN=0
+endif
+
+MODULES += \
+	dev/keys \
+	dev/ssbi \
+	lib/ptable \
+	dev/panel/msm
+
+DEFINES += \
+	SDRAM_SIZE=$(MEMSIZE) \
+	MEMBASE=$(MEMBASE) \
+	BASE_ADDR=$(BASE_ADDR) \
+	TAGS_ADDR=$(TAGS_ADDR) \
+	KERNEL_ADDR=$(KERNEL_ADDR) \
+	RAMDISK_ADDR=$(RAMDISK_ADDR) \
+	SCRATCH_ADDR=$(SCRATCH_ADDR)
+
+
+OBJS += \
+	$(LOCAL_DIR)/init.o \
+	$(LOCAL_DIR)/keypad.o \
+	$(LOCAL_DIR)/atags.o \
+	$(LOCAL_DIR)/target_display.o
